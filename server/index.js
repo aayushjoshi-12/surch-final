@@ -18,8 +18,9 @@ catch(e){
 
 
 const allowedOrigins = [
-    'https://surch-final.vercel.app',
-    'https://surch-final-4g33.vercel.app'
+    'https://surch-final.vercel.app/',
+    'https://surch-final-4g33.vercel.app',
+    // 'http://localhost:3001'
 ];
 
 const corsOptions = {
