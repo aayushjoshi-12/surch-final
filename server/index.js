@@ -21,6 +21,15 @@ app.use(cors({
     credentials: true
 }));
 
+// Enable preflight requests for all routes
+app.options('*', cors());
+
+// Debugging middleware to log requests
+app.use((req, res, next) => {
+    console.log('Request received: ', req.method, req.url);
+    next();
+});
+
 // Middleware
 app.use(express.json());
 app.use(helmet());
