@@ -33,7 +33,7 @@ const AnswerComponent = ({isLoading, className, load}: AnswerProps) => {
 			{load? (
 				<div className="flex flex-col justify-center gap-2 my-8">
 					<div className="flex p-2 rounded-md dark:bg-neutral-800 bg-gray-100 ">{load?.query}</div>
-				<div className="overflow-y-auto h-[400px] max-w-[550px] bg-gray-100 dark:bg-neutral-800 p-4 rounded-md"
+				<div className="overflow-y-auto h-[400px] w-[320px] md:w-[550px] bg-gray-100 dark:bg-neutral-800 p-2 md:p-4 rounded-md"
 			// className=" bg-gray-100 dark:bg-neutral-800 p-4 rounded-md"
 			>
 				

@@ -38,7 +38,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     [syntaxStyle] // Recompute only if syntaxStyle changes
   );
 
-  return <ReactMarkdown className="max-w-[300px]" components={components}>{markdown}</ReactMarkdown>;
+  return <ReactMarkdown className="w-[300px] xl:w-full" components={components}>{markdown}</ReactMarkdown>;
 };
 
 export default MarkdownRenderer;

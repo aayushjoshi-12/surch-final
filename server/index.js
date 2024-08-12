@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const allowedOrigins = [
     'https://surch-final.vercel.app',
     'https://surch-final-fbdx.vercel.app',
-    // 'http://localhost:3001'
+    'http://localhost:3001'
 ];
 
 const corsOptions = {
