@@ -10,9 +10,9 @@ const port = process.env.PORT || 3000;
 // const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
 const allowedOrigins = [
-    'https://surch-final.vercel.app/',
-    'https://surch-final-4g33.vercel.app',
-    'http://localhost:3001'
+    'https://surch-final.vercel.app',
+    'https://surch-final-fbdx.vercel.app',
+    // 'http://localhost:3001'
 ];
 
 const corsOptions = {
