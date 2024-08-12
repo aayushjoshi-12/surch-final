@@ -7,7 +7,7 @@ const chatRouter = require('./Routes/main')
 
 const app = express();
 const port = process.env.PORT || 3000;
-const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
+// const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
 try{
     connection();
@@ -17,27 +17,33 @@ catch(e){
 };
 
 
+const allowedOrigins = [
+    'https://surch-final.vercel.app',
+    'https://surch-final-4g33.vercel.app'
+];
+
 const corsOptions = {
     origin: (origin, callback) => {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: ["POST", "GET"],
+    methods: ["GET", "POST", "OPTIONS"],
+    credentials: true, // if you're using cookies, otherwise, remove this line
+    optionsSuccessStatus: 200, // Some legacy browsers choke on 204
 };
 
-// app.use(cors(corsOptions));
-// app.use(cors({
-//     origin:"https://surch-final.vercel.app/",
-//     methods: ["POST", "GET"]
-// }));
-
-app.use(cors("*"));
+app.use(cors(corsOptions));
 
 // Enable preflight requests for all routes
-app.options('*', cors());
+app.options('*', cors(corsOptions));
+
+// app.use(cors("*"));
+
+// Enable preflight requests for all routes
+// app.options('*', cors());
 
 // Debugging middleware to log requests
 app.use((req, res, next) => {
