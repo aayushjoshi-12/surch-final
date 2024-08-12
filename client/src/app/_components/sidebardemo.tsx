@@ -18,7 +18,6 @@ import { useStateContext } from "@/contexts/ContextProvider";
 import History from "./history";
 import axios from "axios";
 import Image from "next/image";
-
 export function SidebarDemo() {
   const { user } = useUser();
   const {load, history, setHistory} =  useStateContext();
@@ -113,10 +112,11 @@ export const Logo = () => {
     >
       <div className="flex-shrink-0">
         <Image
-          src="./face-with-monocle.svg"
+          src="/icon.png"
           alt="logo"
           height={40}
           width={40}
+          className="size-16 antialiased"
         />
       </div>
       <motion.span

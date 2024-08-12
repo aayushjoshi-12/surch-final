@@ -15,7 +15,11 @@ catch(e){
     console.log('Database not connected', e);
 };
 
-app.use(cors("*"));
+app.use(cors({
+    origin:[process.env.FRONTEND_URL],
+    methods: ["POST", "GET"],
+    credentials: true
+}));
 
 // Middleware
 app.use(express.json());
