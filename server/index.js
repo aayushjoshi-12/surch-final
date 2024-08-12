@@ -28,13 +28,13 @@ const corsOptions = {
     methods: ["POST", "GET"],
 };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 // app.use(cors({
 //     origin:"https://surch-final.vercel.app/",
 //     methods: ["POST", "GET"]
 // }));
 
-// app.use(cors("*"));
+app.use(cors("*"));
 
 // Enable preflight requests for all routes
 app.options('*', cors());
