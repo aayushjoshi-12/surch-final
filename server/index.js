@@ -9,30 +9,23 @@ const app = express();
 const port = process.env.PORT || 3000;
 // const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 
-try{
-    connection();
-}
-catch(e){
-    console.log('Database not connected', e);
-};
-
-
 const allowedOrigins = [
     'https://surch-final.vercel.app/',
     'https://surch-final-4g33.vercel.app',
-    // 'http://localhost:3001'
+    'http://localhost:3001'
 ];
 
 const corsOptions = {
     origin: (origin, callback) => {
+        console.log('Request origin:', origin); // Log the request origin
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
         } else {
+            console.log('Blocked by CORS:', origin); // Log blocked origins
             callback(new Error('Not allowed by CORS'));
         }
     },
     methods: ["GET", "POST", "OPTIONS"],
-    credentials: true, // if you're using cookies, otherwise, remove this line
     optionsSuccessStatus: 200, // Some legacy browsers choke on 204
 };
 
@@ -55,6 +48,13 @@ app.use((req, res, next) => {
 // Middleware
 app.use(express.json());
 app.use(helmet());
+
+try{
+    connection();
+}
+catch(e){
+    console.log('Database not connected', e);
+};
 
 app.use('/chat', chatRouter);
 
