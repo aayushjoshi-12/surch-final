@@ -16,9 +16,11 @@ catch(e){
 };
 
 app.use(cors({
-    origin:["https://surch-final.vercel.app"],
+    origin:"https://surch-final.vercel.app/",
     methods: ["POST", "GET"]
 }));
+
+// app.use(cors("*"));
 
 // Enable preflight requests for all routes
 app.options('*', cors());
