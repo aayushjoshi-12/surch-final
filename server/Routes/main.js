@@ -23,15 +23,15 @@ router.post('/', async (req, res) => {
         });
         console.log("after answer");
         const chat = await Chat.findOne({date, userId});
+        const chatTitle = query.substring(0,15)+"...";
         if(!chat){
-            const chatTitle = query.substring(0,15);
             let chatArray=[];
             chatArray.push({title: chatTitle, query, answer: answer.data.inference});
             await new Chat({date, userId, chats: chatArray}).save();
             res.send({message: "successfully inserted first data"});
             return;
         }
-        chat.chats.unshift({title: query.substring(0,15), query, answer: answer.data.inference});
+        chat.chats.unshift({title: chatTitle, query, answer: answer.data.inference});
         await chat.save();
         res.send({message: "successfull", answer: answer.data.inference });
     } catch (error) {
