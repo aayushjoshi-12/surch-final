@@ -16,9 +16,8 @@ catch(e){
 };
 
 app.use(cors({
-    origin:[process.env.FRONTEND_URL],
-    methods: ["POST", "GET"],
-    credentials: true
+    origin:["https://surch-final.vercel.app"],
+    methods: ["POST", "GET"]
 }));
 
 // Enable preflight requests for all routes
